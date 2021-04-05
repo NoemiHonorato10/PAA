@@ -1,13 +1,21 @@
+//Algoritmo Bubble Sort - Pertence ao conjunto Teta de n ao quadrado - ∈ Θ(n²) em C++
 #include <iostream>
 #include<cstdlib>
+#include <vector>
 
-using namespace std;
-//Algoritmo Bubble Sort - Pertence ao conjunto Teta de n ao quadrado - ∈ Θ(n2)
+//using namespace std;
+
+template <typename T>
+void imprimirVector(std::vector<T>& elemento){
+
+}
 int main() {
 
-    double elemento[7] = {89, 45, 68, 90, 29, 34, 17};
+     std::vector<int> elemento = {89, 45, 68, 90, 29, 34, 17};
+  // std::vector<char> elemento = {'w', 's', 'h', 'n', 'a', 'o', 'e'};
     double aux;
-    
+    //Crescente
+  /*  
     for(int i=0; i<7; i++){ //Começa a troca, faz a varredura de par a par para trocar ou não.
         for(int j=0; j<6; j++){
             if(elemento[j] > elemento[j+1]){
@@ -18,10 +26,23 @@ int main() {
         }
 
     }
-cout << "\nOrdenar a matriz por Bubble Sort de forma crescente: " << endl;
+    */
+    //decrescente
+
+    for(int i=0; i<7; i++){ //Começa a troca, faz a varredura de par a par para trocar ou não.
+        for(int j=i+1; j<6; j++){
+            if(elemento[i] < elemento[j]){
+                aux = elemento[i];
+                elemento[i] = elemento[j];
+                elemento[j] = aux;
+            }
+        }
+
+    }
+ std::cout << "\nOrdenar a matriz por Bubble Sort de forma crescente: " << std::endl;
     for(int i=0; i<7; i++)
-        cout << elemento[i] << " / ";
-    cout << endl;
+         std::cout << elemento[i] << "  ";
+     std::cout << std::endl;
     return 0;    
 }
 /*Referências: 

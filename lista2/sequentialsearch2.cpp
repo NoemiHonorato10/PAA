@@ -1,6 +1,7 @@
+// Algoritmo sequential search2 em C++ | O(n) 
 #include <iostream>
 using namespace std;
-//Algoritmo Sequential Search - O(n) 
+
 int BuscaSequencial(int matriz[], int valorpesquisado, int tamanho)
 {
 

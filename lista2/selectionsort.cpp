@@ -1,14 +1,20 @@
-#include <iostream>
-#include <cstdlib>
 /* Algoritmo Selection Sort
 ordenação por seleção é um algoritmo Θ(n²) em todas as entradas.
 No entanto, o número de trocas de chave é Θ(n).
 */
+#include <iostream>
+#include <cstdlib>
+#include <vector>
 using namespace std;
 
+template <typename T>
+void imprimirVector(vector<T>& elemento){
+
+}
 int main(){
 
-    double elemento[7] = {89, 45, 68, 90, 29, 34, 17};
+    //vector<int> elemento = {89, 45, 68, 90, 29, 34, 17};
+    vector<char> elemento = {'w', 's', 'h', 'n', 'a', 'o', 'e'};
     double aux;
 
     double menor; //Grava o menor elemento atual
@@ -37,7 +43,7 @@ int main(){
     }
     cout << "\nOrdenado por Selection Sort: " << endl;
     for (int i = 0; i < 7; i++)
-        cout << elemento[i] << " / ";
+        cout << elemento[i] << "  ";
     cout << endl;
     return 0;
 }

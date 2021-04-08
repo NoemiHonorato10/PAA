@@ -1,6 +1,6 @@
 // Algoritmo em C ++ para encontrar a casca convexa de um conjunto de pontos.
 #include <iostream>
-#include <stack>
+#include <stack> //pilha
 #include <stdlib.h>
 using namespace std;
  
@@ -14,7 +14,7 @@ struct Ponto
 Ponto p0;
  
 // Uma função de utilidade para encontrar próximo ao topo em uma pilha
-Ponto nextToTop(stack<Ponto> &S)
+Ponto proxParaTopo(stack<Ponto> &S)
 {
     Ponto p = S.top();
     S.pop();
@@ -24,7 +24,7 @@ Ponto nextToTop(stack<Ponto> &S)
 }
  
 // Uma função de utilidade para trocar dois pontos
-void swap(Ponto &p1, Ponto &p2)
+void troca(Ponto &p1, Ponto &p2)
 {
     Ponto temp = p1;
     p1 = p2;
@@ -44,7 +44,7 @@ int distSq(Ponto p1, Ponto p2)
 // 0 -> p, q e r são colineares
 // 1 -> Sentido horário
 // 2 -> Anti-horário
-int orientation(Ponto p, Ponto q, Ponto r)
+int orientacao(Ponto p, Ponto q, Ponto r)
 {
     int val = (q.y - p.y) * (r.x - q.x) -
               (q.x - p.x) * (r.y - q.y);
@@ -59,9 +59,9 @@ int compare(const void *vp1, const void *vp2)
 {
    Ponto *p1 = (Ponto *)vp1;
    Ponto *p2 = (Ponto *)vp2;
- 
+   
    // Encontrar orientação
-   int o = orientation(p0, *p1, *p2);
+   int o = orientacao(p0, *p1, *p2);
    if (o == 0)
      return (distSq(p0, *p2) >= distSq(p0, *p1))? -1 : 1;
  
@@ -85,8 +85,8 @@ void convexHull(Ponto points[], int n)
    }
  
    // Coloque o ponto mais inferior na primeira posição
-   swap(points[0], points[min]);
- 
+   troca(points[0], points[min]);
+
    // Classifica n-1 pontos em relação ao primeiro ponto.
     // Um ponto p1 vem antes de p2 na saída classificada se p2
     // tem um ângulo polar maior (no sentido anti-horário
@@ -104,10 +104,9 @@ void convexHull(Ponto points[], int n)
    {
        // Continue removendo i enquanto o ângulo de i e i + 1 é o mesmo
         // com respeito a p0
-       while (i < n-1 && orientation(p0, points[i],
+       while (i < n-1 && orientacao(p0, points[i],
                                     points[i+1]) == 0)
           i++;
- 
  
        points[m] = points[i];
        m++;  // Atualizar o tamanho da matriz modificada
@@ -130,7 +129,7 @@ void convexHull(Ponto points[], int n)
       // Continue removendo o topo enquanto o ângulo formado por
        // pontos próximo ao topo, topo e pontos [i] tornam
        // uma curva não à esquerda
-      while (S.size()>1 && orientation(nextToTop(S), S.top(), points[i]) != 2)
+      while (S.size()>1 && orientacao(proxParaTopo(S), S.top(), points[i]) != 2)
          S.pop();
       S.push(points[i]);
    }
@@ -147,8 +146,8 @@ void convexHull(Ponto points[], int n)
 // Programa de driver para testar as funções acima
 int main()
 {
-    Ponto points[] = {{0, 3}, {1, 1}, {2, 2}, {4, 4},
-                      {0, 0}, {1, 2}, {3, 1}, {3, 3}};
+    Ponto points[] = {{0, 3}, {1, 1}, {2, 2}, {5, 4},
+                      {0, 0}, {1, 2}, {6, 1}, {3, 3}};
     int n = sizeof(points)/sizeof(points[0]);
     convexHull(points, n);
     return 0;

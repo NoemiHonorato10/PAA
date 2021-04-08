@@ -14,7 +14,7 @@ int main() {
      std::vector<int> elemento = {89, 45, 68, 90, 29, 34, 17};
   // std::vector<char> elemento = {'w', 's', 'h', 'n', 'a', 'o', 'e'};
     double aux;
-    //Crescente
+//Crescente
   /*  
     for(int i=0; i<7; i++){ //Começa a troca, faz a varredura de par a par para trocar ou não.
         for(int j=0; j<6; j++){
@@ -24,7 +24,6 @@ int main() {
                 elemento[j+1] = aux;
             }
         }
-
     }
     */
     //decrescente

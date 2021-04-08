@@ -5,31 +5,34 @@
 using namespace std;
 
 /**
-    \brief Dado um grafo completo, não direcionado e ponderado na forma de uma matriz de adjacência,
-            retorna o menor passeio que visita todos os nós e começa e termina no mesmo
-            nó. Esta solução de programação dinâmica é executada em O (n * 2 ^ n).
-    \return o custo mínimo para completar o passeio 
+    Dado um grafo completo, não direcionado e ponderado na forma de uma matriz de adjacência,
+    retorna o menor passeio que visita todos os nós e começa e termina no mesmo
+    nó. Esta solução de programação dinâmica é executada em O (n * 2 ^ n)., ou seja, se o valor de "n" for grande
+    é um problema de otimização combinatória. Por enumeração completa serão (n-1)!/2 Rotas.
+    cresce mais rápido do que exponencialmente.
+    É um problema NP-Completo.
+    visa saber o custo mínimo para completar o passeio.
 */
-int tsp(const vector<vector<int>> &cidades, int pos, int visitou, vector<vector<int>> &estado)
+int minimo(const vector<vector<int>> &cidades, int posicao, int visitou, vector<vector<int>> &estado)
 {
     if (visitou == ((1 << cidades.size()) - 1))
-        return cidades[pos][0]; // voltar para a cidade de partida
+        return cidades[posicao][0]; // voltar para a cidade de partida
 
-    if (estado[pos][visitou] != INT_MAX)
-        return estado[pos][visitou];
+    if (estado[posicao][visitou] != INT_MAX)//constantes INT_MAX = Valor máximo para um objeto do tipo int, 32767( ) ou maior *2^15-1
+        return estado[posicao][visitou];
 
     for (int i = 0; i < cidades.size(); ++i)
     {
         // não podemos nos visitar a menos que estejamos terminando e pule se já visitamos
-        if (i == pos || (visitou & (1 << i)))
+        if (i == posicao || (visitou & (1 << i)))
             continue;
 
-        int distancia = cidades[pos][i] + tsp(cidades, i, visitou | (1 << i), estado);
-        if (distancia < estado[pos][visitou])
-            estado[pos][visitou] = distancia;
+        int distancia = cidades[posicao][i] + minimo(cidades, i, visitou | (1 << i), estado);
+        if (distancia < estado[posicao][visitou])
+            estado[posicao][visitou] = distancia;
     }
 
-    return estado[pos][visitou];
+    return estado[posicao][visitou];
 
 }
 
@@ -37,14 +40,13 @@ int main()
 {
     vector<vector<int>> cidades = {{0, 20, 42, 35},
                                   {20, 0, 30, 34},
-                                  {42, 30, 0, 12},
-                                  {35, 34, 12, 0}};
+                                  {42, 25, 0, 12},
+                                  {35, 10, 12, 0}};
 
     vector<vector<int>> estado(cidades.size());
     for (auto &vizinhas : estado)
-        vizinhas = vector<int>((1 << cidades.size()) - 1, INT_MAX);
-
-    std::cout << "Minino: " << tsp(cidades, 0, 1, estado) << std::endl;
+        vizinhas = vector<int>((1 << cidades.size()) - 1, INT_MAX); //constantes INT_MAX = Valor máximo para um objeto do tipo int
+    std::cout << "Minino: " << minimo(cidades, 0, 1, estado) << std::endl;
 
     return 0;
 }

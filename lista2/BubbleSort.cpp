@@ -1,8 +1,7 @@
 //Algoritmo Bubble Sort - Pertence ao conjunto Teta de n ao quadrado - ∈ Θ(n²) em C++
 #include <iostream>
-#include<cstdlib>
+#include <cstdlib>
 #include <vector>
-
 //using namespace std;
 
 template <typename T>
@@ -41,7 +40,7 @@ int main() {
  std::cout << "\nOrdenar a matriz por Bubble Sort de forma crescente: " << std::endl;
     for(int i=0; i<7; i++)
          std::cout << elemento[i] << "  ";
-     std::cout << std::endl;
+     std::cout << std::endl; //:: Operador de Alcance, qualificador de escopo, Esquerda para a direita.
     return 0;    
 }
 /*Referências: 

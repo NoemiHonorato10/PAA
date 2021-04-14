@@ -1,4 +1,10 @@
-// Algoritmo em C ++ para encontrar a casca convexa de um conjunto de pontos.
+// Algoritmo em C ++ para encontrar a casca convexa de um conjunto de pontos em um plano.
+// Achar os extremos requer tempo O(n)
+// Melhor caso: T(n)=2T(n/2)+O(n) | Solução: O(n log n)
+//Pior caso: quando cada partição esta extremanente desbalanceada: 
+//           T(n)=T(n-1)+O(n)
+//               =T(n-1)+cn
+//Ou seja, O(n²) -> pior caso quadrático.
 #include <iostream>
 #include <stack> //pilha
 #include <stdlib.h>
@@ -13,7 +19,7 @@ struct Ponto
 // até o primeiro ponto Usado na função de comparação de qsort ()
 Ponto p0;
  
-// Uma função de utilidade para encontrar próximo ao topo em uma pilha
+// Uma função de utilidade para encontrar próximo do topo em uma pilha
 Ponto proxParaTopo(stack<Ponto> &S)
 {
     Ponto p = S.top();
@@ -23,8 +29,8 @@ Ponto proxParaTopo(stack<Ponto> &S)
     return res;
 }
  
-// Uma função de utilidade para trocar dois pontos
-void troca(Ponto &p1, Ponto &p2)
+// Uma função de utilidade para swapr(trocar) dois pontos
+void swap(Ponto &p1, Ponto &p2)
 {
     Ponto temp = p1;
     p1 = p2;
@@ -84,8 +90,8 @@ void convexHull(Ponto points[], int n)
         ymin = points[i].y, min = i;
    }
  
-   // Coloque o ponto mais inferior na primeira posição
-   troca(points[0], points[min]);
+   // Coloque o ponto mais inferior na primeira posição, ou seja, faz a troca
+   swap(points[0], points[min]);
 
    // Classifica n-1 pontos em relação ao primeiro ponto.
     // Um ponto p1 vem antes de p2 na saída classificada se p2
@@ -166,4 +172,5 @@ Rio de Janeiro : Elsevier, 2012. il.
 Tradução de: Introduction to algorithms, 3rd ed.
 1. Programação (Computadores). 2. Algoritmos de computador. 3. 
 Estruturas de dados (Computadores). I. Cormen, Thomas H.
+[5]http://www.dcs.gla.ac.uk/~pat/52233/slides/Hull1x1.pdf
 */

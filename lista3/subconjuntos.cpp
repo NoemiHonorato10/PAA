@@ -32,44 +32,36 @@ using namespace std;
 
 void combinacoes(int elemento[], bool verifica_e[], int i, int tamanho_e)
 {
-	if(i == tamanho_e
-    )
-	{
-		for(int j = 0; j < tamanho_e
-        ; j++)
-		{
-			if(verifica_e[j] == 1)
-				cout << elemento[j] << " ";
-		}
-		cout << endl;
-	}
-	else
-	{
-		verifica_e[i] = true;
-		combinacoes(elemento, verifica_e, i + 1, tamanho_e
-        );
-		verifica_e[i] = false;
-		combinacoes(elemento, verifica_e, i + 1, tamanho_e
-        );
-	}
+    if (i == tamanho_e)
+    {
+        for (int j = 0; j < tamanho_e; j++)
+        {
+            if (verifica_e[j] == 1)
+                cout << elemento[j] << " ";
+        }
+        cout << endl;
+    }
+    else
+    {
+        verifica_e[i] = true;
+        combinacoes(elemento, verifica_e, i + 1, tamanho_e);
+        verifica_e[i] = false;
+        combinacoes(elemento, verifica_e, i + 1, tamanho_e);
+    }
 }
 
 int main()
 {
-	int elemento[] = {1, 2, 3};
-	int tamanho_e
-     = sizeof(elemento) / sizeof(int);
-	bool verifica_e[tamanho_e
-    ];
+    int elemento[] = {1, 2, 3};
+    int tamanho_e = sizeof(elemento) / sizeof(int);
+    bool verifica_e[tamanho_e];
 
-	for(int i = 0; i < tamanho_e
-    ; i++)
-		verifica_e[i] = false;
+    for (int i = 0; i < tamanho_e; i++)
+        verifica_e[i] = false;
 
-	combinacoes(elemento, verifica_e, 0, tamanho_e
-    );
+    combinacoes(elemento, verifica_e, 0, tamanho_e);
 
-	return 0;
+    return 0;
 }
 /*Referências: 
 [1]Introduction to the design & analysis of algorithms / Anany Levitin. — 3rd ed.

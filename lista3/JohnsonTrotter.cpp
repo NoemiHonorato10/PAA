@@ -1,6 +1,6 @@
 /*  
     Algoritmo de Johnson e Trotter - Tem bom desempenho gera todas as permutações de troca mínima:
-    – A partir de uma permutação, apenas dois elementos são
+    A partir de uma permutação, apenas dois elementos são
     trocados de lugar (i. e., transpostos) para gerar a próxima
     permutação.
     O algoritmo não requer armazenar todas as permutações

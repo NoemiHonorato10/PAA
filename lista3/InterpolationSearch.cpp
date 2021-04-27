@@ -15,6 +15,14 @@
  */
 #include<bits/stdc++.h>
 #include<vector>
+#include <algorithm>
+#include <array>
+#include <chrono>
+#include <iomanip>
+#include <iostream>
+#include <memory>
+#include <random>
+#include <vector>
 //using namespace std;
  
 // Se elemento está presente em vetor [0..n-1], então retorna
@@ -55,7 +63,7 @@ int interpolationSearch(std::vector<int> &vetor, int n, int elemento)
 }
  
 int main()
-{
+{  
     std::cout<<"**Pesquisa de Interpolacao**\n";
    int numero;
 

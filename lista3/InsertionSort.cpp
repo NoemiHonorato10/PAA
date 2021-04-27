@@ -5,6 +5,8 @@
     Melhor caso: O(n), quando a matriz está ordenado;
     Médio caso: O(n²/4), quando a matriz tem valores aleatórios sem ordem de classificação (crescente ou decrescente);
     Pior caso: O(n²), quando a matriz está em ordem inversa, daquela que deseja ordenar.
+    Para calcular T(n), o tempo de execução de Insertion-Sort de uma entrada de n valores, somamos os
+    produtos das colunas custo e vezes, obtendo: Tempo = n-1 | Função linear de n.
 
                 Melhor|	Médio|	Pior
 Insertion sort 	 O(n)	O(n²)	O(n²)
@@ -16,11 +18,18 @@ Funciona assim:
         4	      {3,5,10,12,8,1}	   {3,5,10,12,8}    {3,5,8,10,12,1}
         5	      {3,5,8,10,12,1}	   {3,5,8,10,12,1}	{1,3,5,8,10,12}
         6	      {}	               {}	            {1,3,5,8,10,12}
-
 */ 
+#include <algorithm>
+#include <array>
+#include <chrono>
+#include <fstream>
+#include <functional>
+#include <iomanip>
 #include <iostream>
+#include <memory>
+#include <random>
+#include <string>
 #include <vector>
-#include <iostream>
 
 //using namespace std;
 
@@ -64,7 +73,7 @@ São Paulo : MAchaveRON Boochaves, 1995.
 [3]Introdução à Programação Curso em C++ Dr. Alan R. R. de Freitas,ALANDEFREITAS.COM
 Edição: 19 de Março de 2015.
 [4]Algoritmos / Thomas H. Cormen... [et al.] ; [tradução Arlete Simille Marques]. - 
-Rio de Janeiro : Elsevier, 2012. il.
+Rio de Janeiro : Elsevier, 2012. il| página 32.
 Tradução de: Introduction to algorithms, 3rd ed.
 1. Programação (Computadores). 2. Algoritmos de computador. 3. 
 Estruturas de dados (Computadores). I. Cormen, Thomas H.

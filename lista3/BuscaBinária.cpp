@@ -1,10 +1,9 @@
 //Algoritmo Busca Binária em C++
-//BINARY-SEARCH é um procedimento serial, o
-//Pertence ao conjunto trabalho e a duração de seu pior caso são (log n).
-//Implementação Iterativa:
+//BINARY-SEARCH é um procedimento serial.
+//Implementação Iterativa: repete uma tarefa até que ela seja completa.
 /*
 classe:	Algoritmo de busca
-estrutura de dados:	Array
+estrutura de dados:	Array (no caso vector)
 complexidade caso médio: O(log n)
 complexidade melhor caso:	O(1)
 complexidade de espaços pior caso:	O(log n)
@@ -26,13 +25,15 @@ espaço: O(1)
 // limite superior da direita (termina em um número a menos. 0 a 9 são 10 números)
     int direita = v.size() - 1;
     int i; //i recebe o índice do meio entre início e fim
-    do {
+    do { //Faça enquando a condição for verdadeira
         i = (esquerda + direita) / 2;
         if (v[i] < chave) {
             esquerda = i + 1;
         } else {
             direita = i - 1;
         }
+// O operador lógico && só vai retornar verdadeiro (true), se todas as condições forem verdadeiras.
+// ou seja, v na possição [i] é diferente da chave && (true)...
     } while (v[i] != chave && esquerda <= direita);
     if (v[i] == chave) { //devolva o índice i | elemento chave encontrado
         return i;
@@ -48,9 +49,9 @@ int main()
     int numero;
 	std::cout<<"Digite o numero a ser pesquisado na segunda posicao:\n";
 	std::cin>>numero;
-    std::vector<int> chave = {2, 7};
+    std::vector<int> i = {2, 7};
 	// Se o número for encontrado, imprima "ENCONTRADO"
-	if(PesquisaBinaria(chave,numero) == true) std::cout<<"Encontrado\n";
+	if(PesquisaBinaria(i,numero) == true) std::cout<<"Encontrado\n";
 	else std::cout<<"Nao encontrado\n";
 }
 /*Referências: 

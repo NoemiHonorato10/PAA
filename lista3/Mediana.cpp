@@ -31,8 +31,8 @@ Melhor caso |	pivô sempre elemento mediano 		|		O(nlogn)
 
 int main(){
 
-int tamanho, i = 0, j = 0, moda;
-float media = 0, mediana = 0, soma = 0, aux = 0, conta = 0;
+int tamanho, i = 0, j = 0;
+float media = 0, mediana = 0, soma = 0, aux = 0;
 
 //Pega o valor digitado
 
@@ -53,9 +53,9 @@ if(tamanho>0){
 
 //Média
 
-media=soma/tamanho;
-std::cout<<"\nMedia: \n";
-std::cout<<media<<std::endl;
+// media=soma/tamanho;
+// std::cout<<"\nMedia: \n";
+// std::cout<<media<<std::endl;
 
 
 //Mediana
@@ -71,7 +71,7 @@ std::cout<<media<<std::endl;
         }
     }
 
-    if(tamanho%2){
+    if(tamanho){
          mediana = v[tamanho/2];
     } else {
          mediana = (v[tamanho/2-1]+v[tamanho/2])/2;

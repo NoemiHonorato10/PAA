@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 
-/* Busca Binaria- Busaca recursivamente a chave dentro do vetor. A cada iteração
+/* Busca Binaria- Busca recursivamente a chave dentro do vetor. A cada iteração
    reduz o espaço de busca pela metade. Quando encontra a chave retorna
    o índice(meio) onde ele foi encontrado. Caso contrário retorna -1 
 
@@ -14,7 +14,7 @@ int buscaBinaria(std::vector<int> &vetor, int esquerdo, int direito, int chave)
 {
     int meio = (esquerdo + direito) / 2; //C1+C2+C3|Três constantes somadas é uma constante Θ(1)
 
-    if (esquerdo > direito) //Busca enquanto tiver espaso no vetor 
+    if (esquerdo > direito) //Busca enquanto tiver espaço no vetor 
     {
         return -1; //Se o valor não for encontrado retorna -1
     }
@@ -30,7 +30,7 @@ int buscaBinaria(std::vector<int> &vetor, int esquerdo, int direito, int chave)
     }
     else // Ou aqui... ou uma ou outra. | T(n)=1
     { // vetor[meio] > chave
-        return buscaBinaria(vetor, esquerdo, meio - 1, chave); //reduz o vetor do inicio ao meio
+        return buscaBinaria(vetor, esquerdo, meio - 1, chave); //reduz o vetor do início ao meio
     }
 }
 

@@ -1,43 +1,41 @@
-// Algoritmo sequential search2 em C++ | O(n) 
-#include <iostream>
-using namespace std;
+// Algoritmo sequential search2 em C++ | O(n)
 
-int BuscaSequencial(int matriz[], int valorpesquisado, int tamanho)
+#include <bits/stdc++.h>
+
+int BuscaSequencial(std::vector<int> vetor, int item)
 {
-
-    for (int i = 0; i < tamanho; i++)
+    for (int i = 0; i < vetor.size(); i++)// Repete n vezes
     {
-        if (valorpesquisado == matriz[i])
+
+        if (vetor[i] == item)
         {
             return i;
         }
     }
 
-    return -1;
+    return -1; // Se o valor não for encontrado retorna -1
 }
 
 int main()
 {
 
-    int elemento[7] = {89, 45, 68, 90, 29, 34, 17};
+    int numero;
+    std::cout << "Digite o numero a ser pesquisado:\n";
+    std::cin >> numero;
 
-    int valordigitado;
+    std::vector<int> vetor = {1, 5, 8, 19, 25, 43, 99};
 
-    cout << "\nDigite um numero inteiro:" << endl;
-    cin >> valordigitado;
-
-    int resutado = BuscaSequencial(elemento, 7, valordigitado);
-
-    if (resutado >= 0)
+    if (BuscaSequencial(vetor, numero) >= 0)
     {
-        cout << "\nO numero: " << elemento[resutado] << " foi encontrado no"
-                                                        "\nelemento com indice: "
-             << resutado << endl;
+
+        std::cout << "Encontrado" << std::endl;
     }
     else
     {
-        cout << "\nO numero: " << valordigitado << " nao foi encontrado. " << endl;
+        std::cout << "Nao encontrado" << std::endl;
     }
+
+    return 0;
 }
 
 /*Referências: 

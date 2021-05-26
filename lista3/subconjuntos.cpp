@@ -28,38 +28,37 @@
 */
 #include <iostream>
 
-using namespace std;
 
-void combinacoes(int elemento[], bool verifica_e[], int i, int tamanho_e)
+void combinacoes(int elemento[], bool verifica[], int i, int tamanho)
 {
-    if (i == tamanho_e)
+    if (i == tamanho)
     {
-        for (int j = 0; j < tamanho_e; j++)
+        for (int j = 0; j < tamanho; j++)
         {
-            if (verifica_e[j] == 1)
-                cout << elemento[j] << " ";
+            if (verifica[j] == 1)
+                std::cout << elemento[j] << " ";
         }
-        cout << endl;
+        std::cout << std::endl;
     }
     else
     {
-        verifica_e[i] = true;
-        combinacoes(elemento, verifica_e, i + 1, tamanho_e);
-        verifica_e[i] = false;
-        combinacoes(elemento, verifica_e, i + 1, tamanho_e);
+        verifica[i] = true;
+        combinacoes(elemento, verifica, i + 1, tamanho);
+        verifica[i] = false;
+        combinacoes(elemento, verifica, i + 1, tamanho);
     }
 }
 
 int main()
 {
     int elemento[] = {1, 2, 3};
-    int tamanho_e = sizeof(elemento) / sizeof(int);
-    bool verifica_e[tamanho_e];
+    int tamanho = sizeof(elemento) / sizeof(int);
+    bool verifica[tamanho];
 
-    for (int i = 0; i < tamanho_e; i++)
-        verifica_e[i] = false;
+    for (int i = 0; i < tamanho; i++)
+        verifica[i] = false;
 
-    combinacoes(elemento, verifica_e, 0, tamanho_e);
+    combinacoes(elemento, verifica, 0, tamanho);
 
     return 0;
 }

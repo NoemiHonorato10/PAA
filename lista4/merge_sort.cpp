@@ -7,9 +7,7 @@ que faz uso da estratégia “dividir para conquistar” para resolver problemas
 Normalmente usa poucos recursos de mémoria, é um algoritmo eficiente. 
 Um algoritmo de ordenação diz-se estável se preserva a ordem de registros de chaves iguais. 
 Isto é, se tais registros aparecem na sequência ordenada na mesma ordem em que estão na sequência inicial.
- Melhor caso:
-Pior caso:
-Anáslise Assintótica:
+T(n) = 2T(n/2) + complexidade_merge
  */
 
 void snapshot(std::vector<char> &elementos);

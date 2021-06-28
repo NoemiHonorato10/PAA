@@ -23,7 +23,7 @@ class No
 };
 int size(std::shared_ptr<No> raiz) //Tamanho da árvore
 { 
-    if (raiz == 0) 
+    if (raiz == NULL) 
         return 0; 
     else
         return(size(raiz->esquerda) + 1 + size(raiz->direita)); 

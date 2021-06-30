@@ -1,4 +1,5 @@
 // Algoritmo de Busca em Profundidade em C++ 
+//Complexidade:  O(n + m)
 #include <iostream>
 #include <list>
 #include <memory>
@@ -8,7 +9,8 @@ class Graph
 private:
     int _V;    // número de vértices
     bool _direcionado;
-    std::unique_ptr< std::list<int> > adj;  // ponteiro para um array contendo as listas de adjacências
+    // ponteiro para um array contendo as listas de adjacências
+    std::unique_ptr< std::list<int> > adj;  
     void BuscaUtil(int v, bool visitado[]);
       
 public:
@@ -26,11 +28,13 @@ Graph::Graph(int V, bool direcionado) : adj(new std::list<int>[V]) // cria as li
 void Graph::AddAresta(int v, int w)
 {
     std::list<int>* adjacente = adj.get();
-    adjacente[v].push_back(w);// adiciona vértice v à lista de vértices adjacentes de w
+    // adiciona vértice v à lista de vértices adjacentes de w
+    adjacente[v].push_back(w);
    
     if (!_direcionado)
     {
-        adjacente[w].push_back(v);// insere "v" na lista Adiciona um novo elemento no final do vetor
+        // insere "v" na lista Adiciona um novo elemento no final do vetor
+        adjacente[w].push_back(v);
     }
 }
   
@@ -40,14 +44,14 @@ void Graph::BuscaUtil(int v, bool visitado[])
     visitado[v] = true; // marca como visitado
     std::cout << v << " ";
   
-    // Pecorre para todos os vértices adjacentes a este vértice
+    // Percorre para todos os vértices adjacentes a este vértice
     std::list<int>::iterator i;
     for (i = (adj.get())[v].begin(); i != (adj.get())[v].end(); ++i)
         if (!visitado[*i])
             BuscaUtil(*i, visitado);
 }
   
-// Traversal da busca em profundidade dos vértices alcançáveis de v. 
+// Transversal da busca em profundidade dos vértices alcançáveis de v. 
 //Ele usa BuscaUtil() recursivo
 void Graph::BuscaEmProfundidade(int v)
 {

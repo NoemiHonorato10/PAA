@@ -1,58 +1,57 @@
-// Algoritmo para o problema da mochila em C++
+// Algoritmo para o problema da mochila (knapsack) em C++
 #include <iostream>
-using namespace std;
 
-int knapsack(int W, int wt[], int b[], int n)
+int mochila(int capacidade, int peso[], int valor[], int item)
 {
     // tabela que será preenchida
-    int V[n + 1][W + 1];
+    int tabela[item + 1][capacidade + 1];
 
     // inicializando a primeira linha e primeira coluna com 0
-    for (int w = 0; w <= W; w++)
-        V[0][w] = 0;
-    for (int i = 1; i <= n; i++)
-        V[i][0] = 0;
+    for (int j = 0; j <= capacidade; j++)
+        tabela[0][j] = 0;
+    for (int i = 1; i <= item; i++)
+        tabela[i][0] = 0;
 
-    for (int i = 1; i <= n; i++)
+    for (int i = 1; i <= item; i++)
     {
-        for (int w = 1; w <= W; w++)
+        for (int j = 1; j <= capacidade; j++)
         {
             // elemento pode fazer parte da solução
-            if (wt[i - 1] <= w)
+            if (peso[i - 1] <= j)
             {
-                // max...
-                if ((b[i - 1] + V[i - 1][w - wt[i - 1]]) > V[i - 1][w])
-                    V[i][w] = b[i - 1] + V[i - 1][w - wt[i - 1]];
+                //máximo
+                if ((valor[i - 1] + tabela[i - 1][j - peso[i - 1]]) > tabela[i - 1][j])
+                    tabela[i][j] = valor[i - 1] + tabela[i - 1][j - peso[i - 1]];
                 else
-                    V[i][w] = V[i - 1][w];
+                    tabela[i][j] = tabela[i - 1][j];
             }
             else
-                V[i][w] = V[i - 1][w]; // wi > w
+                tabela[i][j] = tabela[i - 1][j]; // ji > j
         }
     }
 
     // retorna o valor máximo colocado na mochila
-    return V[n][W];
+    return tabela[item][capacidade];
 }
 
-int main(int argc, char *argv[])
+int main()
 {
-    // capacidade máxima da mochila: W
-    int W = 20;
+    // capacidade máxima da mochila
+    int capacidade = 10;
 
-    // número de elementos
-    int n = 5;
+    // número de elementos itens
+    int item = 4;
 
-    // vetor com os valores (benefício) de cada elemento
-    int b[] = {3, 5, 8, 4, 10};
+    // vetor com os valores de cada elemento
+    int valor[] = {3, 5, 8, 9};
 
     // vetor com os pesos de cada elemento
-    int wt[] = {2, 4, 5, 3, 9};
+    int peso[] = {2, 4, 3, 1};
 
     // obtém o máximo valor que pode ser colocado na mochila
-    int max_valor = knapsack(W, wt, b, n);
+    int max_valor = mochila(capacidade, peso, valor, item);
 
-    cout << "Valor maximo: " << max_valor << endl;
+    std::cout << "Valor maximo: " << max_valor << std::endl;
 
     return 0;
 }

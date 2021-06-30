@@ -1,13 +1,13 @@
 //Algoritmo brute force closest pair em C ++ 
-#include <iostream>
-#include <float.h>
-#include <stdlib.h>
-#include <math.h>
-using namespace std;
 //Algoritmo  de Brute Force Closest Pair
 // Um programa de divisão e conquista para encontrar a menor distância de um
 // determinado conjunto de pontos.
 // Uma estrutura para representar um Ponto no plano 2D
+#include <iostream>
+#include <float.h>
+#include <stdlib.h>
+#include <math.h>
+
 struct Ponto
 {
     int x, y;
@@ -142,7 +142,7 @@ int main()
 {
     Ponto P[] = {{2, 3}, {12, 30}, {40, 50}, {5, 1}, {12, 10}, {3, 4}};
     int n = sizeof(P) / sizeof(P[0]);
-    cout << "A menor distancia " << closest(P, n);
+    std::cout << "A menor distancia " << closest(P, n);
     return 0;
 }
 

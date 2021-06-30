@@ -5,10 +5,20 @@
 //           T(n)=T(n-1)+O(n)
 //               =T(n-1)+cn
 //Ou seja, O(n²) -> pior caso quadrático.
+//Feito em aula pelo professor Rodrigo
 #include <iostream>
-#include <stack> //pilha
+#include <stack>
 #include <stdlib.h>
+#include <iostream>
+#include <matplot/matplot.h>
+#include <chrono>
+#include "PCC104_DeacreaseAndConquer_Maplotpp.h"
 using namespace std;
+/*
+ Melhor caso:
+Pior caso:
+Anáslise Assintótica:
+ */
  
 struct Ponto
 {
@@ -30,7 +40,7 @@ Ponto proxParaTopo(stack<Ponto> &S)
 }
  
 // Uma função de utilidade para swapr(trocar) dois pontos
-void swap(Ponto &p1, Ponto &p2)
+void swap(Ponto &p1, Ponto &p2) //Constante
 {
     Ponto temp = p1;
     p1 = p2;
@@ -141,7 +151,8 @@ void convexHull(Ponto points[], int n)
    }
  
    // Agora a pilha tem os pontos de saída, imprime o conteúdo da pilha
-   while (!S.empty())
+   while (!S.empty())   // "empty" Teste se a string está vazia. Retorna se a string está vazia (ou seja, se seu comprimento é 0). A função não modifica o valor da string de forma alguma
+
    {
        Ponto p = S.top();
        cout << "(" << p.x << ", " << p.y <<")" << endl;
@@ -153,9 +164,18 @@ void convexHull(Ponto points[], int n)
 int main()
 {
     Ponto points[] = {{0, 3}, {1, 1}, {2, 2}, {5, 4},
-                      {0, 0}, {1, 2}, {6, 1}, {3, 3}};
+                     {0, 0}, {1, 2}, {6, 1}, {3, 3}};
     int n = sizeof(points)/sizeof(points[0]);
     convexHull(points, n);
+
+    matplot::plot(n, points, "-s")
+		->line_width(5)
+		.marker_size(10)
+		.marker_color("g")
+		.marker_face_color({.5,.5,.5});
+
+	matplot::show();
+
     return 0;
 }
 

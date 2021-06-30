@@ -2,49 +2,46 @@
 ordenação por seleção é um algoritmo Θ(n²) em todas as entradas.
 No entanto, o número de trocas de chave é Θ(n).
 */
-#include <iostream>
-#include <cstdlib>
-#include <vector>
-using namespace std;
 
-template <typename T>
-void imprimirVector(vector<T>& elemento){
+#include <bits\stdc++.h>
 
-}
-int main(){
+int main()
+{
 
-    //vector<int> elemento = {89, 45, 68, 90, 29, 34, 17};
-    vector<char> elemento = {'w', 's', 'h', 'n', 'a', 'o', 'e'};
+    std::vector<int> elemento = {89, 45, 68, 90, 29, 34, 17};
+    //std::vector<char> elemento = {'w', 's', 'h', 'n', 'a', 'o', 'e'};
     double aux;
 
-    double menor; //Grava o menor elemento atual
-    int posicao; //Grava a posição que se encontrar o menor elemento
-    bool troca; // saber se precisa haver troca ou não.
-    for (int i = 0; i < 6; i++) // For - para contar quantas vezes vou repetir isso, limitado a posição a 6, pois tem o incremento.
+    double menor;               //Grava o menor elemento atual
+    int posicao;                //Grava a posição que se encontrar o menor elemento
+    bool troca;                 // saber se precisa haver troca ou não.
+    // For - para contar quantas vezes vou repetir isso, limitado a posição a 6, pois tem o incremento.
+    for (int i = 0; i < 6; i++) 
     {
         menor = elemento[i]; // o menor vai para posição 0, pois o i começa com 0.
-        posicao = i; // gravar a posição
+        posicao = i;         // gravar a posição
         troca = false;
-        for (int j = i + 1; j < 7; j++)//Vai varrer todas as posições
+        for (int j = i + 1; j < 7; j++) //Vai varrer todas as posições
         {
-            if (elemento[j] < menor)// Faz a verificação
+            if (elemento[j] > menor) // Faz a verificação
             {
-                menor = elemento[j];// Se for menor, grava o valor
-                posicao = j;// a posição era 0 agora passa a valer 1
-                troca = true;// Continua até o valor passar por todos e ser o menor de todos
+                menor = elemento[j]; // Se for menor, grava o valor
+                posicao = j;         // a posição era 0 agora passa a valer 1
+                troca = true;        // Continua até o valor passar por todos e ser o menor de todos
             }
         }
-        if (troca == true)// Faz a troca
+        if (troca == true) // Faz a troca
         {
-            aux = elemento[i]; // Grava o elemento que estava na primeira posição
-            elemento[i] = menor;// O elemento da primeira possição passa a ser o menor (no caso 1).
-            elemento[posicao] = aux;// Faz a troca - O elemento da segunda posição(no caso 2) passar a ser o auxiliar(que era o elelmento da 1ªPosição).
+            aux = elemento[i];       // Grava o elemento que estava na primeira posição
+            elemento[i] = menor;     // O elemento da primeira possição passa a ser o menor (no caso 1).
+// Faz a troca - O elemento da segunda posição(no caso 2) passar a ser o auxiliar(que era o elelmento da 1ªPosição).
+            elemento[posicao] = aux; 
         }
     }
-    cout << "\nOrdenado por Selection Sort: " << endl;
+    std::cout << "\nOrdenado por Selection Sort: " << std::endl;
     for (int i = 0; i < 7; i++)
-        cout << elemento[i] << "  ";
-    cout << endl;
+        std::cout << elemento[i] << "  ";
+    std::cout << std::endl;
     return 0;
 }
 /*Referências: 

@@ -1,14 +1,13 @@
 //Algoritmo busca em largura Grafos - BFS (busca em largura) em C ++ 
-#include <iostream>
-#include <list>
-#include <queue> // fila para usar na BFS
+//Complexidade:  O(n + m)
 
-using namespace std;
+#include<bits\stdc++.h>
 
 class Grafo
 {
 	int V; // número de vértices
-	list<int> *adj; // ponteiro para um array contendo as listas de adjacências
+	std::list<int> *adj; // ponteiro para um array contendo as listas de adjacências
+	//std::unique_ptr< std::list<int> > adj; 
 
 public:
 	Grafo(int V); // construtor
@@ -21,7 +20,7 @@ public:
 Grafo::Grafo(int V)
 {
 	this->V = V; // atribui o número de vértices
-	adj = new list<int>[V]; // cria as listas
+	adj = new std::list<int>[V]; // cria as listas
 }
 
 void Grafo::adicionarAresta(int v1, int v2)
@@ -32,23 +31,23 @@ void Grafo::adicionarAresta(int v1, int v2)
 
 void Grafo::bfs(int v)
 {
-	queue<int> fila;
+	std::queue<int> fila;
 	bool visitados[V]; // vetor de visitados
 
 	for(int i = 0; i < V; i++)
 		visitados[i] = false;
 
-	cout << "Visitando vertice " << v << " ...\n";
+	std::cout << "Visitando vertice " << v << " ...\n";
 	visitados[v] = true; // marca como visitado
 
 	while(true)
 	{
-		list<int>::iterator it;
+		std::list<int>::iterator it;
 		for(it = adj[v].begin(); it != adj[v].end(); it++)
 		{
 			if(!visitados[*it])
 			{
-				cout << "Visitando vertice " << *it << " ...\n";
+				std::cout << "Visitando vertice " << *it << " ...\n";
 				visitados[*it] = true; // marca como visitado
 				fila.push(*it); // insere na fila
 			}

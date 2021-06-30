@@ -2,7 +2,7 @@
 
 #include <bits/stdc++.h>
 
-int BuscaSequencial(std::vector<int> vetor, int item)
+int BuscaSequencial(std::vector<int>& vetor, int item)
 {
     for (int i = 0; i < vetor.size(); i++)// Repete n vezes
     {

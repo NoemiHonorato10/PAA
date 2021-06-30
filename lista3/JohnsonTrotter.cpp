@@ -3,21 +3,24 @@
     A partir de uma permutação, apenas dois elementos são
     trocados de lugar (i. e., transpostos) para gerar a próxima
     permutação.
-    O algoritmo não requer armazenar todas as permutações
-    de tamanho n-1 e não requer passar por todas as permutações mais curtas. 
-    Em vez disso, ele acompanha a 
-    direção de cada elemento da permutação.
-    Logo, a complexidade média (de transposições) é O(n²).
+    Logo, a complexidade é O(n!).
+Todas as permutacaes de troca minima:
+1234
+1243 1423 4123 4132 1432 1342 1324 3124 3142 3412 4312 4321 3421 3241 3214 2314 2341 2431 4231 4213 2413 2143 2134 
 */
+/*
+ Melhor caso:
+Pior caso:
+Anáslise Assintótica:
+ */
 #include <bits/stdc++.h>//Este arquivo inclui todas as bibliotecas padrão
-using namespace std;
   
 bool esquerdadireita = true;
 bool direitaesquerda = false;
   
 // Funções utilitárias para encontrar a
 // posição do maior número inteiro inverso em um array[].
-int searchArr(int a[], int n, int inverso)
+int pesquisarArr(int a[], int n, int inverso)
 {
     for (int i = 0; i < n; i++)
         if (a[i] == inverso)
@@ -26,7 +29,7 @@ int searchArr(int a[], int n, int inverso)
   
 // Para realizar a etapa 1 do algoritmo, ou seja,
 // para encontrar o maior número inteiro inverso.
-int getinverso(int a[], bool dir[], int n)
+int obterInverso(int a[], bool dir[], int n)
 {
     int inverso_prev = 0, inverso = 0;
     for (int i = 0; i < n; i++)
@@ -59,18 +62,18 @@ int getinverso(int a[], bool dir[], int n)
 }
   
 // Imprime uma única permutação
-int printOnePerm(int a[], bool dir[], int n)
+int impPermutacao(int a[], bool dir[], int n)
 {
-    int inverso = getinverso(a, dir, n);
-    int pos = searchArr(a, n, inverso);
+    int inverso = obterInverso(a, dir, n);
+    int pos = pesquisarArr(a, n, inverso);
   
     // trocando os elementos de acordo com o
     // direção, ou seja, dir [].
     if (dir[a[pos - 1] - 1] ==  direitaesquerda)
-       swap(a[pos-1], a[pos-2]); //Linear em n : executa uma operação de troca por elemento.
+       std::swap(a[pos-1], a[pos-2]); //swap Constante : executa uma operação de troca por elemento.
   
     else if (dir[a[pos - 1] - 1] == esquerdadireita)
-       swap(a[pos], a[pos-1]); //Linear em n : executa uma operação de troca por elemento.
+       std::swap(a[pos], a[pos-1]); //Constante : executa uma operação de troca por elemento.
   
     // alterando as direções dos elementos
     // maior que o maior número inteiro móvel.
@@ -86,14 +89,14 @@ int printOnePerm(int a[], bool dir[], int n)
     }
   
     for (int i = 0; i < n; i++)
-        cout << a[i];
-    cout << " ";
+        std::cout << a[i];
+    std::cout << " ";
 }
   
 // Para finalizar o algoritmo de eficiência, ele termina
 // no fatorial de n devido ao número de
 // permutações possíveis são apenas n!.
-int fact(int n)
+int fatorial(int n)
 {
     int res = 1;
     for (int i = 1; i <= n; i++)
@@ -101,9 +104,9 @@ int fact(int n)
     return res;
 }
   
-// Esta função chama principalmente printOnePerm ()
+// Esta função chama principalmente impPermutacao ()
 // um por um para imprimir todas as permutações.
-void printPermutation(int n)
+void impPermutacao(int n)
 {
     // Para armazenar a permutação atual
     int a[n];
@@ -116,9 +119,9 @@ void printPermutation(int n)
     for (int i = 0; i < n; i++)
     {
         a[i] = i + 1;
-        cout << a[i];
+        std::cout << a[i];
     }
-    cout << endl;
+    std::cout << std::endl;
   
    // inicialmente todas as direções são definidas
    // da DIREITA PARA A ESQUERDA, ou seja, 0.
@@ -126,15 +129,15 @@ void printPermutation(int n)
         dir[i] =  direitaesquerda;
   
     // para gerar permutações no pedido.
-    for (int i = 1; i < fact(n); i++)
-        printOnePerm(a, dir, n);
+    for (int i = 1; i < fatorial(n); i++)
+        impPermutacao(a, dir, n);
 }
-  
+
 int main()
 {
     std::cout << "\nTodas as permutacaes de troca minima: " << std::endl;
     int n = 4;
-    printPermutation(n);
+    impPermutacao(n);
     return 0;
 }
 /*Referências: 

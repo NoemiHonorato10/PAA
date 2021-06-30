@@ -14,8 +14,8 @@
 		Inserção	 O(log n)	  O(n)
 		Remoção	     O(log n)	  O(n)
 */
+
 #include<iostream>
-using namespace std;
 // Definição de Nó para árvore de pesquisa binária
 struct No {
 	int dados; 
@@ -68,7 +68,7 @@ bool buscar(No* raiz,int dados) {
 }
 int main() {
 	No* raiz = NULL;  // Criando uma árvore vazia
-	raiz = Inserir(raiz,14); // Teste	
+	raiz = Inserir(raiz,14); 
 	raiz = Inserir(raiz,20);	
 	raiz = Inserir(raiz,10);
 	raiz = Inserir(raiz,13);
@@ -76,11 +76,11 @@ int main() {
 	raiz = Inserir(raiz,17);
 	 
 	int numero;
-	cout<<"Digite o numero a ser pesquisado:\n";
-	cin>>numero;
-	// Se o número for encontrado, imprima "ENCONTRADO"
-	if(buscar(raiz,numero) == true) cout<<"Encontrado\n";
-	else cout<<"Nao encontrado\n";
+	std::cout<<"Digite o numero a ser pesquisado:\n";
+	std::cin>>numero;
+	// Se o número for encontrado
+	if(buscar(raiz,numero) == true) std::cout<<"Encontrado\n";
+	else std::cout<<"Nao encontrado\n";
 }
 /*Referências: 
 [1]Introduction to the design & analysis of algorithms / Anany Levitin. — 3rd ed.

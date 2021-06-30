@@ -13,6 +13,7 @@
     e o valor da chave estiver mais próximo do último elemento, 
     a pesquisa de interpolação provavelmente iniciará a pesquisa em direção ao lado final.
  */
+
 #include<bits/stdc++.h>
 #include<vector>
 #include <algorithm>
@@ -23,9 +24,8 @@
 #include <memory>
 #include <random>
 #include <vector>
-//using namespace std;
  
-// Se elemento está presente em vetor [0..n-1], então retorna
+// Se elemento está presente em vetor [0...n-1], então retorna
 // índice dele, senão retorna -1.
 int interpolationSearch(std::vector<int> &vetor, int n, int elemento)
 {

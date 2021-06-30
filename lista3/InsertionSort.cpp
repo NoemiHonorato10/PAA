@@ -31,8 +31,6 @@ Funciona assim:
 #include <string>
 #include <vector>
 
-//using namespace std;
-
 int main ()  
 {    
     //std::vector<int> elemento = { 12,4,3,1,15,45,33,21,10,2};   
